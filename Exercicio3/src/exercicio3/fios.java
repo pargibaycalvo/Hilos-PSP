@@ -27,28 +27,28 @@ public class fios extends Thread{
     @Override
     public void run(){
         
-        int m = rnd.nextInt(200) + 300; //random para meter unos valores por cada ejecucion
+        int m = rnd.nextInt(200) + 300; 
         
         try {
-            Thread.sleep(segundos * 300); //tiempo de espera para la siguiente ejecucion
+            Thread.sleep(segundos * 300);
             
             try {
-                if (num < 5){ //crea 5 hilos en este caso será el Padre, cuando este llegue a 5 creados finaliza
+                if (num < 5){ 
                     f = new fios(""+num);
                     num++;
                 }
-                System.out.println("Padre " +f.getName()+ "->" +m+ "ms"); //mensaje de que los hilos creados son el Padre con sus milisegundos
+                System.out.println("Padre " +f.getName()+ "->" +m+ "ms");
                 
-                for(int i=0; i<5; i++){ //crea 5 hijos por cada padre 
-                    Thread.sleep(segundos * 300); //tiempo de espera para la creacion de cada hijo
-                    System.out.println("Hijo de " +f.getName()+ "->" +m+ "ms"); //mensaje de que cada hijo creado con sus milisegundos
+                for(int i=0; i<5; i++){ 
+                    Thread.sleep(segundos * 300); 
+                    System.out.println("Hijo de " +f.getName()+ "->" +m+ "ms"); 
                 }
-                if(f != null){ //cuando los padres y hijos terminan este termina de crear más
-                    f.start(); //inicia 
-                    f.join(); //espera a que termine 
-                    System.out.println(""); //espacio en blanco
-                    Thread.sleep(segundos * 300); //tiempo de espera para terminar la ejecucion de cada padre
-                    System.out.println("-Me desconecto- " +f.getName()+ "->" +m+ "ms"); // mensaje que se van desconectando los padres
+                if(f != null){ 
+                    f.start();
+                    f.join(); 
+                    System.out.println("");
+                    Thread.sleep(segundos * 300);
+                    System.out.println("-Me desconecto- " +f.getName()+ "->" +m+ "ms");
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(fios.class.getName()).log(Level.SEVERE, null, ex);
